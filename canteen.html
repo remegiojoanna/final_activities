@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="canteen.css"/>
+    <title>Canteen</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="#"><img src="images/logo.jpg" alt="Logo" class="logo-img" />Canteen</a>
+                </div>
+                <ul class="links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <!-- Articles with dropdown -->
+                    <li class="dropdown">
+                        <a href="#">Articles</a>
+                        <ul class="dropdown-content">
+                            <li><a href="snow.html">University Article</a></li>
+                            <li><a href="canteen.html">Canteen Article</a></li>
+                            <li><a href="fav.html">Favorite Article</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html">MP3</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    
+        <div class="dropdown_menu">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="#">Articles</a>
+                    <ul class="dropdown-content">
+                        <li><a href="snow.html">University Article</a></li>
+                        <li><a href="canteen.html">Canteen Article</a></li>
+                        <li><a href="fav.html">Favorite Article</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html">MP3</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <header class="header" onclick="toggleAllSteps()">
+        <h1>Steps to Enjoy Your Meal</h1>
+    </header>
+
+    <main>
+        <div class="step-container">
+            <!-- Step 1 -->
+            <div class="step-card" id="step1">
+                <div class="step-header">
+                    <div class="number" onclick="toggleContent(1)">01</div>
+                </div>
+                <div class="content">
+                    <img src="images/step1.jpg" alt="Falling in Line and Ordering">
+                    <h4>Step 1: Falling in Line and Ordering</h4>
+                    <p>Queue up in an orderly manner and decide on your order while waiting for your turn.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card" id="step2">
+                <div class="step-header">
+                    <div class="number" onclick="toggleContent(2)">02</div>
+                </div>
+                <div class="content">
+                    <img src="images/step2.jpg" alt="Pay for Your Order">
+                    <h4>Step 2: Paying for Your Order</h4>
+                    <p>Proceed to the cashier and pay for your selected items.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card" id="step3">
+                <div class="step-header">
+                    <div class="number" onclick="toggleContent(3)">03</div>
+                </div>
+                <div class="content">
+                    <img src="images/step3.jpg" alt="Enjoying Your Meal">
+                    <h4>Step 3: Enjoying Your Meal</h4>
+                    <p>Sit down, relax, and savor your food.</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card" id="step4">
+                <div class="step-header">
+                    <div class="number" onclick="toggleContent(4)">04</div>
+                </div>
+                <div class="content">
+                    <img src="images/step4.jpg" alt="Cleaning Your Area">
+                    <h4>Step 4: Cleaning Your Area</h4>
+                    <p>Tidy up the space where you ate to keep the bistro clean and welcoming.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    
+    <script>
+    const toggleBtn = document.querySelector('.toggle_btn');
+    const toggleBtnIcon = document.querySelector('.toggle_btn i');
+    const dropDownMenu = document.querySelector('.dropdown_menu');
+
+    toggleBtn.onclick = function () {
+    // Toggle the menu visibility
+    dropDownMenu.classList.toggle('open');
+    
+    // Change the icon to 'x' or 'bars' based on the state of the menu
+    const isOpen = dropDownMenu.classList.contains('open');
+    toggleBtnIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+};
+
+    // Toggle individual step
+    function toggleContent(step) {
+    const selectedCard = document.getElementById(`step${step}`); // Correct template literal syntax
+    selectedCard.classList.toggle('active');
+}
+
+// Toggle all steps when the header is clicked
+    function toggleAllSteps() {
+    const allCards = document.querySelectorAll('.step-card');
+    const allActive = Array.from(allCards).every(card => card.classList.contains('active'));
+
+    // If all are active, close them; otherwise, open all
+    allCards.forEach(card => card.classList.toggle('active', !allActive));
+}
+
+
+    </script>
+</body>
+</html>
